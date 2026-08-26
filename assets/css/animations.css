@@ -1,0 +1,302 @@
+/* ==========================================================================
+   JAYBEES CONFECTIONERY - ADVANCED ANIMATIONS & COLORFUL VISUAL EFFECTS
+   ========================================================================== */
+
+/* --- Dynamic Gradient Animations --- */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rainbowBorder {
+  0% {
+    border-color: #d73e72;
+    box-shadow: 0 0 15px rgba(215, 62, 114, 0.4);
+  }
+  33% {
+    border-color: #fcc403;
+    box-shadow: 0 0 20px rgba(252, 196, 3, 0.5);
+  }
+  66% {
+    border-color: #8f284a;
+    box-shadow: 0 0 20px rgba(143, 40, 74, 0.4);
+  }
+  100% {
+    border-color: #d73e72;
+    box-shadow: 0 0 15px rgba(215, 62, 114, 0.4);
+  }
+}
+
+/* --- Ambient Floating Orbs (Lava Glow) --- */
+@keyframes orbFloat1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -50px) scale(1.15);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-50px, 40px) scale(1.1);
+  }
+  66% {
+    transform: translate(30px, -40px) scale(0.95);
+  }
+}
+
+/* --- Floating Keyframes --- */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(3deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(14px) rotate(-3deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(252, 196, 3, 0.4), 0 0 30px rgba(215, 62, 114, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(252, 196, 3, 0.8), 0 0 45px rgba(215, 62, 114, 0.5);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes sparkleSpin {
+  0% {
+    transform: rotate(0deg) scale(0.85);
+    opacity: 0.7;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #fcc403);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.85);
+    opacity: 0.7;
+  }
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-25deg);
+  }
+}
+
+@keyframes badgeBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* --- Interactive Particle Canvas --- */
+#sweetSparkleCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* --- Colorful Ambient Orbs Layer --- */
+.ambient-glow-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.ambient-orb-1 {
+  top: -10%;
+  right: -5%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #d73e72 0%, rgba(215, 62, 114, 0) 70%);
+  animation: orbFloat1 12s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  bottom: 5%;
+  left: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #fcc403 0%, rgba(252, 196, 3, 0) 70%);
+  animation: orbFloat2 15s ease-in-out infinite;
+}
+
+.ambient-orb-3 {
+  top: 40%;
+  right: 15%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #8f284a 0%, rgba(143, 40, 74, 0) 70%);
+  animation: orbFloat1 18s ease-in-out infinite reverse;
+}
+
+/* --- Colorful Animated Marquee Ticker --- */
+.sweet-marquee-section {
+  background: linear-gradient(135deg, #d73e72 0%, #8f284a 50%, #fcc403 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 8s ease infinite;
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 -2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 15;
+}
+
+.sweet-marquee-track {
+  display: inline-flex;
+  gap: 3rem;
+  animation: marqueeScroll 22s linear infinite;
+}
+
+.sweet-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.marquee-item i {
+  color: #fcc403;
+  font-size: 1.1rem;
+}
+
+/* --- Utility Animation Classes --- */
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkleSpin 4s linear infinite;
+  display: inline-block;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite;
+}
+
+.animate-bounce-badge {
+  animation: badgeBounce 3s ease-in-out infinite;
+}
+
+/* --- Scroll Reveal Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-left {
+  transform: translateX(-45px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(45px);
+}
+
+.reveal.reveal-zoom {
+  transform: scale(0.9);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Dynamic Shimmer Effect on CTA and Special Buttons */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmerSweep 3.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
