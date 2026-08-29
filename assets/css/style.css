@@ -402,7 +402,7 @@ button:focus {
 }
 
 .navbar-brand img {
-  height: 60px;
+  height: 80px;
   width: auto;
   transition: var(--transition-fast);
 }
